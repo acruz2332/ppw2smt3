@@ -16,8 +16,10 @@ class PostController extends Controller
     {
         $data = array(
             'id' => 'posts',
-            'posts' => Post::all()
+            'posts' => Post::orderBy('created_at', 'desc')->paginate(5),
         );
+        // dd($data);
+        // $data = Post::orderBy('created_at', 'desc')->paginate(5);
         return view('blog')->with($data);
     }
     /**

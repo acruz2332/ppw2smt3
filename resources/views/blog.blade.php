@@ -26,4 +26,13 @@
 @else
     <h3>tidak ada data.</h3>
 @endif
+<br><br>
+Halaman : {{ $posts->currentPage() }} <br>
+Jumlah data : {{ $posts->total() }} <br>
+Data per halaman : {{ $posts->perPage() }} <br>
+<center>
+<div class="d-flex">
+    {{ $posts->links() }}
+</div>
+</center>
 @endsection

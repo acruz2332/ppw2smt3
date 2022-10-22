@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 class LandingPageController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth', ["except" => ["home"]]);
+    }
     public function home(){
         return view('homee');
     }

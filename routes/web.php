@@ -17,27 +17,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/homee', function () {
-    return view('homee');
-});
-
-Route::get('/about', function () {
-    return view('about');
-});
-
-Route::get('/education', function () {
-    return view('education');
-});
-
-Route::get('/project', function () {
-    return view('project');
-});
-
 Route::get('/halo/{nama?}', function ($nama='default') {
     return '<h1>Halo ' . $nama . '</h1>';
 });
 
-Auth::routes();
+Auth::routes([
+    'reset' => false,
+]);
+
+Route::get('/homee',[App\Http\Controllers\LandingPageController::class, 'home']);
+Route::get('/about',[App\Http\Controllers\LandingPageController::class, 'about']);
+Route::get('/education',[App\Http\Controllers\LandingPageController::class, 'education']);
+Route::get('/project',[App\Http\Controllers\LandingPageController::class, 'project']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

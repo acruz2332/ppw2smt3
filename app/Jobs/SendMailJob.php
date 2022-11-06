@@ -13,7 +13,7 @@ use App\Mail\SendEmail;
 class SendMailJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-
+    public $data;
     public function __construct($data)
     {
         $this->data = $data;

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Image;
 use timestamps;
 class PostController extends Controller
 {
@@ -40,9 +41,22 @@ class PostController extends Controller
     {
         $this->validate($request,[
             'title' => 'required',
+            'picture' => 'image|nullable|max:1999   '
         ]);
 
+        if ($request->hasFile('picture')){
+            $foto = $request->picture;
+            $filenameWithExt = $request->file('picture')->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('picture')->getClientOriginalExtension();
+            $filenameSimpan = $filename . '_' . time() . '.' . $extension;
+            Image::make($foto)->resize(500,500)->encode('jpg')->save(storage_path().'\app\public\posts_image/'.$filenameSimpan);
+            // $path = $request->file('picture')->storeAs('public/posts_image', $filenameSimpan);
+        }else{
+            $filenameSimpan = 'noimage.png';
+        }
         $post = new Post;
+        $post->picture = $filenameSimpan;
         $post->title = $request->input('title');
         $post->description = $request->input('deskripsi');
         $post->save();

@@ -84,6 +84,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             </ul>
           </li>
+          <li class="nav-item d-none d-sm-inline-block">
+            <a class="nav-link" href="{{url('/gallery')}}">Gallery</a>
+          </li>
         </ul>
 
         

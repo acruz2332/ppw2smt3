@@ -56,4 +56,7 @@ Route::get('/delete/{id}',[App\Http\Controllers\PostController::class, 'destroy'
 Route::get('/send-email', [App\Http\Controllers\SendEmailController::class, 'index'])->name('kirim-email');
 Route::post('/post-email', [App\Http\Controllers\SendEmailController::class, 'store'])->name('post-email');
 
+Route::resource('gallery', 'App\Http\Controllers\GalleryController');
+
+
 

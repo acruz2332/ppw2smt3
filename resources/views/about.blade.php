@@ -9,6 +9,4 @@
     <p class="card-text">Website trial ini dibuat untuk memenuhi penugasan Praktikum Pemrograman Web 2 Pertemuan ke-4.</p>
   </div>
 </div>
-
-Tes
 @endsection

@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Storage;
 class LandingPageController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth', ["except" => ["home"]]);
+    }
     public function home(){
         return view('homee');
     }
